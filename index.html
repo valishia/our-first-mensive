@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Raghav 💙</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #132240;
+    --navy-light: #1e3a5f;
+    --gold: #c9a84c;
+    --gold-light: #e8c96d;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --blue-accent: #4a90d9;
+    --soft-blue: #a8c4e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .stars {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--dur) ease-in-out infinite;
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: var(--op); transform: scale(1.2); }
+  }
+
+  .screen {
+    display: none;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    animation: fadeIn 0.7s ease;
+  }
+  .screen.active { display: flex; flex-direction: column; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04) inset;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--blue-accent), var(--gold));
+    border-radius: 28px 28px 0 0;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -30%; left: -30%;
+    width: 160%; height: 160%;
+    background: radial-gradient(circle at 35% 25%, rgba(74,144,217,0.07) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+    line-height: 1.35;
+  }
+  .subtitle {
+    color: var(--soft-blue);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+  }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(201,168,76,0.5);
+  }
+  .btn:active { transform: translateY(0); }
+
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0.9rem auto;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(74,144,217,0.12);
+    border: 1px solid rgba(74,144,217,0.28);
+    color: var(--soft-blue);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.38rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+  .heart-wrap {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+  }
+  .big-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .big-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--soft-blue);
+    margin-bottom: 1.8rem;
+    margin-top: 0.3rem;
+  }
+
+  .moves-line {
+    color: var(--soft-blue);
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+  }
+  .moves-line span {
+    color: var(--gold-light);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+    max-width: 300px;
+    margin: 0 auto 1rem;
+  }
+  .mc {
+    aspect-ratio: 1;
+    cursor: pointer;
+    perspective: 600px;
+  }
+  .mc-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+  }
+  .mc.flipped .mc-inner, .mc.matched .mc-inner { transform: rotateY(180deg); }
+  .mc-f, .mc-b {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    backface-visibility: hidden;
+  }
+  .mc-f {
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.18);
+    color: rgba(168,196,224,0.5);
+    font-size: 1rem;
+  }
+  .mc-f::after { content: '?'; }
+  .mc-b {
+    background: linear-gradient(135deg, #163666, #254e8a);
+    border: 1px solid rgba(74,144,217,0.35);
+    transform: rotateY(180deg);
+  }
+  .mc.matched .mc-b {
+    background: linear-gradient(135deg, #14412a, #1f6b43);
+    border-color: rgba(74,200,144,0.4);
+  }
+  #game-win {
+    display: none;
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .reasons-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1.5rem;
+  }
+  .reason-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.14);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+  .reason-card:hover {
+    border-color: rgba(74,144,217,0.4);
+    transform: translateX(5px);
+    background: rgba(30,58,95,0.8);
+  }
+  .reason-card.open {
+    border-color: rgba(74,144,217,0.45);
+    background: linear-gradient(135deg, rgba(22,54,102,0.6), rgba(37,78,138,0.4));
+  }
+  .r-icon { font-size: 1.15rem; flex-shrink:0; margin-top:1px; }
+  .r-title { font-weight:500; color: var(--cream); font-size:0.9rem; }
+  .r-desc { color: var(--soft-blue); font-size:0.8rem; margin-top:0.25rem; line-height:1.55; display:none; }
+  .reason-card.open .r-desc { display:block; animation: fadeIn 0.3s ease; }
+  .hint { color:rgba(168,196,224,0.4); font-size:0.72rem; font-style:italic; margin-bottom:0.8rem; }
+
+  .letter-box {
+    width: 100%;
+    max-width: 400px;
+    background: linear-gradient(160deg, #faf8f2, #ede8df);
+    border-radius: 20px;
+    padding: 2.5rem 1.8rem 2rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+  }
+  .letter-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--blue-accent), var(--gold));
+  }
+  .lc {
+    position: absolute;
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(201,168,76,0.35);
+  }
+  .lc.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .lc.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .lc.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .lc.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+  .letter-to {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #4a3a20;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+  .letter-body {
+    color: #2a1e0e;
+    font-size: 0.88rem;
+    line-height: 1.9;
+    text-align: left;
+    white-space: pre-line;
+  }
+  .letter-from {
+    margin-top: 1.5rem;
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #3a2a0a;
+    font-size: 0.9rem;
+    opacity: 0.75;
+  }
+  .letter-end {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    color: #3a2a0a;
+    font-size: 0.95rem;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .floater {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.05;
+    font-size: 1.5rem;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity:0; }
+    8% { opacity:0.05; }
+    92% { opacity:0.05; }
+    100% { transform: translateY(-80px) rotate(360deg); opacity:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="floater" style="left:8%;animation-duration:13s;animation-delay:0s;font-size:1.8rem">💙</div>
+<div class="floater" style="left:25%;animation-duration:16s;animation-delay:3s;font-size:1rem">✦</div>
+<div class="floater" style="left:50%;animation-duration:11s;animation-delay:5s;font-size:1.2rem">⭐</div>
+<div class="floater" style="left:72%;animation-duration:14s;animation-delay:1.5s;font-size:1.8rem">💙</div>
+<div class="floater" style="left:90%;animation-duration:12s;animation-delay:7s;font-size:1rem">✦</div>
+
+<div class="screen active" id="screen1">
+  <div class="card">
+    <div class="badge">1 Month Together 💙</div>
+    <div class="heart-wrap">💙</div>
+    <h1>Hi, my love</h1>
+    <div class="divider"></div>
+    <p class="subtitle">I made this just for you.<br>Play a little game to unlock your surprises 🎁</p>
+    <div class="big-num" id="dayNum">30</div>
+    <div class="big-label">days of us</div>
+    <button class="btn" onclick="goTo('screen2')">Start Game →</button>
+  </div>
+</div>
+
+<!-- ======= SCREEN 2: MEMORY GAME ======= -->
+<div class="screen" id="screen2">
+  <div class="card">
+    <h2>Let's play a little game</h2>
+    <p class="subtitle" style="margin-bottom:0.5rem;font-style:italic">before your surprise ✨</p>
+    <p style="color:var(--soft-blue);font-size:0.8rem;margin-bottom:0.8rem">Tap two cards to find the matching pairs!</p>
+    <div class="moves-line">Moves: <span id="moveCount">0</span></div>
+    <div class="game-grid" id="gameGrid"></div>
+    <div id="game-win">🎉 You found all the pairs!</div>
+    <button class="btn" id="nextBtn" style="display:none" onclick="goTo('screen3')">Continue →</button>
+  </div>
+</div>
+
+<div class="screen" id="screen3">
+  <div style="text-align:center;margin-bottom:1rem;z-index:1;width:100%;max-width:400px">
+    <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--soft-blue);margin-bottom:0.6rem">For you, always</div>
+    <h1 style="font-size:1.9rem">Reasons Why<br>I Love You</h1>
+    <div class="divider"></div>
+    <p class="hint">Tap each card to reveal 💙</p>
+  </div>
+  <div class="reasons-wrap" id="reasonsWrap"></div>
+  <button class="btn" onclick="goTo('screen4')" style="z-index:1">Open Your Letter →</button>
+  <p style="color:rgba(168,196,224,0.35);font-size:0.72rem;margin-top:0.7rem;z-index:1">One final surprise awaits...</p>
+</div>
+
+<div class="screen" id="screen4">
+  <div class="letter-box">
+    <div class="lc tl"></div><div class="lc tr"></div>
+    <div class="lc bl"></div><div class="lc br"></div>
+    <p class="letter-to" id="letterTo"></p>
+    <div class="letter-body" id="letterBody"></div>
+    <div class="letter-from" id="letterFrom"></div>
+    <div class="divider" style="background:linear-gradient(90deg,transparent,#c9a84c,transparent);margin-top:1.2rem"></div>
+    <p class="letter-end" id="letterEnd"></p>
+  </div>
+</div>
+
+<script>
+
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 90; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const sz = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${(Math.random()*4+2).toFixed(1)}s;--op:${(Math.random()*0.55+0.2).toFixed(2)};animation-delay:${(Math.random()*5).toFixed(1)}s`;
+  starsEl.appendChild(s);
+}
+
+function goTo(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+const C = {
+  daysCount: 30,
+
+  reasons: [
+    { icon:'🌊', title:'You Make Me Feel Safe', desc:'I love you because you make me feel safe just by being there, like no matter how messy life gets, I’m not facing it alone.' },
+    { icon:'💪', title:'You’re Patient With Me', desc:'I love you because you are patient with me, especially when I’m overthinking, moody, or not at my best.' },
+    { icon:'😄', title:'You Make Simple Moments Special', desc:'I love you because you make ordinary days feel special, just by talking, laughing, or even sitting in silence together.' },
+    { icon:'🧠', title:'I Can Be Myself With You', desc:'I love you because with you, I can be completely myself without pretending to be someone else.' },
+    { icon:'🤝', title:'You Understand Me', desc:'I love you because you understand me in a way that most people don’t, even the parts of me that I find hard to explain.' },
+    { icon:'🌙', title:'You Always Support Me', desc:'I love you because you support me, believe in me, and remind me that I can do more than I think I can.' },
+  ],
+
+  letterTo: 'To my favorite person,',
+
+  letterBody: `Happy 1st Monthsary, Raghav 💙
+  It’s only been one month, but somehow it already feels like you’ve become such an important part of my life. In such a short time, you’ve given me so many reasons to smile, so many things to be grateful for, and so many moments that I keep replaying in my head when I miss you.
+
+Thank you for being patient with me, for listening to my random stories, for understanding my moods, and for staying even when I’m not the easiest person to deal with. Your presence makes my days feel lighter and my problems feel a little less scary.
+
+I don’t know what the future holds for us, but I’m really happy that my present has you in it. I hope this is just the first of many months we’ll celebrate together. Let’s keep learning each other, growing together, and making more memories, one month at a time.`,
+
+  letterFrom: 'Always you, Raghav 💙',
+  letterEnd: 'I love you. Happy 1 month monthsary, my love 💙',
+};
+
+document.getElementById('dayNum').textContent = C.daysCount;
+
+const emojis = ['🌊','⭐','💎','🚀','🎯','🌙'];
+let deck = [...emojis,...emojis];
+let flipped = [], matchCount = 0, moves = 0, locked = false;
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a; }
+
+function buildGame(){
+  const grid = document.getElementById('gameGrid');
+  grid.innerHTML = '';
+  shuffle(deck);
+  deck.forEach((e,i)=>{
+    const card = document.createElement('div');
+    card.className = 'mc';
+    card.dataset.val = e;
+    card.innerHTML = `<div class="mc-inner"><div class="mc-f"></div><div class="mc-b">${e}</div></div>`;
+    card.addEventListener('click', onFlip);
+    grid.appendChild(card);
+  });
+}
+
+function onFlip(){
+  if(locked||this.classList.contains('flipped')||this.classList.contains('matched')) return;
+  this.classList.add('flipped');
+  flipped.push(this);
+  if(flipped.length===2){
+    moves++;
+    document.getElementById('moveCount').textContent = moves;
+    locked = true;
+    if(flipped[0].dataset.val===flipped[1].dataset.val){
+      flipped.forEach(c=>c.classList.add('matched'));
+      matchCount++;
+      flipped=[];locked=false;
+      if(matchCount===emojis.length){
+        setTimeout(()=>{
+          document.getElementById('game-win').style.display='block';
+          document.getElementById('nextBtn').style.display='inline-flex';
+        },400);
+      }
+    } else {
+      setTimeout(()=>{ flipped.forEach(c=>c.classList.remove('flipped')); flipped=[];locked=false; },900);
+    }
+  }
+}
+buildGame();
+
+const wrap = document.getElementById('reasonsWrap');
+C.reasons.forEach(r=>{
+  const el = document.createElement('div');
+  el.className='reason-card';
+  el.innerHTML=`<div class="r-icon">${r.icon}</div><div><div class="r-title">${r.title}</div><div class="r-desc">${r.desc}</div></div>`;
+  el.addEventListener('click',function(){ this.classList.toggle('open'); });
+  wrap.appendChild(el);
+});
+
+document.getElementById('letterTo').textContent = C.letterTo;
+document.getElementById('letterBody').textContent = C.letterBody;
+document.getElementById('letterFrom').textContent = C.letterFrom;
+document.getElementById('letterEnd').textContent = C.letterEnd;
+</script>
+</body>
+</html>
